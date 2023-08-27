@@ -43,13 +43,24 @@ def process_listing(listing):
         function_call="auto"
     )
     print(response)
-    return {
-        'location': {
-            'lat': response['choices'][0]['message']['content']['location']['lat'],
-            'long': response['choices'][0]['message']['content']['location']['long']
-        },
-        'price': response['choices'][0]['message']['content']['price']
-    }
+    function_call = response['choices'][0]['message']['function_call']
+    if function_call is None:
+        return {
+            'location': {
+                'lat': None,
+                'long': None
+            },
+            'price': None
+        }
+    else:
+        arguments = json.loads(function_call['arguments'])
+        return {
+            'location': {
+                'lat': arguments['location'][0],
+                'long': arguments['location'][1]
+            },
+            'price': arguments['price']
+        }
 
 def main():
     st.title('Property Listing Processor')
