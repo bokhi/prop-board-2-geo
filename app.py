@@ -1,6 +1,6 @@
 import streamlit as st
 import folium
-from streamlit_folium import folium_static
+from streamlit_folium import st_folium
 
 def process_listing(listing):
     # This is a dummy function for now
