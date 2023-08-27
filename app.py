@@ -16,11 +16,14 @@ function_descriptions = [
             "type": "object",
             "properties": {
                 "location": {
-                    "type": "string",
-                    "description": "The location of the property"
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "The longitude and latitude of the property"
                 },
                 "price": {
-                    "type": "string",
+                    "type": "number",
                     "description": "The price of the property"
                 }
             },
