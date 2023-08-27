@@ -43,7 +43,6 @@ def process_listing(listing):
         functions = function_descriptions,
         function_call="auto"
     )
-    print(response)
     function_call = response['choices'][0]['message']['function_call']
     if function_call is None:
         return {
@@ -74,8 +73,8 @@ def main():
         # Create a map centered at the location
         m = folium.Map(location=[result['location']['lat'], result['location']['long']], zoom_start=16)
         folium.Marker(
-            [result['location']['lat'], result['location']['long']], 
-            popup=f"Price: {result['price']}", 
+            [result['location']['lat'], result['location']['long']],
+            popup=f"Price: {result['price']}",
             tooltip="Property Location"
         ).add_to(m)
 
