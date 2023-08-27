@@ -20,11 +20,16 @@ def main():
         st.write('Processing...')
         st.write(result)
 
-        # Create a map centered at the location
-        m = folium.Map(location=[result['location']['lat'], result['location']['long']])
+        # Create a map centered at the location and add a marker
+        m = folium.Map(location=[result['location']['lat'], result['location']['long']], zoom_start=16)
+        folium.Marker(
+            [result['location']['lat'], result['location']['long']], 
+            popup=f"Price: {result['price']}", 
+            tooltip="Property Location"
+        ).add_to(m)
 
         # Display the map
-        folium_static(m)
+        st_folium(m, width=725)
 
 if __name__ == "__main__":
     main()
