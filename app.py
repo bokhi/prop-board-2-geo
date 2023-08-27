@@ -63,11 +63,11 @@ def process_listing(listing):
         }
 
 def main():
-    st.title('Property Listing Processor')
-    listing = st.text_area('Paste your property listing here:', '')
-    if st.button('Process'):
+    st.title('物件リストプロセッサ')
+    listing = st.text_area('ここに物件リストを貼り付けてください:', '')
+    if st.button('処理'):
         result = process_listing(listing)
-        st.write('Processing...')
+        st.write('処理中...')
         st.write(result)
 
         # Create a map centered at the location
