@@ -1,6 +1,6 @@
 # プロパティリスティングプロセッサ
 
-このプロジェクトは、OpenAIの関数呼び出し機能を使用して不規則なプロパティ情報を処理することを示すためのものです。このプロジェクトは、ほぼ全てがChatGPT-4とツールAider(https://github.com/paul-gauthier/aider)を使用してコード生成されています。
+このプロジェクトは、OpenAIの関数呼び出し機能を使用して不規則なプロパティ情報を処理することを示すためのものです。このプロジェクトは、ほぼ全てがChatGPT-4とツール[Aider](https://github.com/paul-gauthier/aider)を使用してコード生成されています。
 
 ![Demo screenshot](demo.png)
 
