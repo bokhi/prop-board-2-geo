@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import streamlit as st
 import folium
 from streamlit_folium import folium_static
+import json
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
