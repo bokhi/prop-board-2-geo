@@ -1,15 +1,51 @@
+import os
+import openai
+from dotenv import load_dotenv
 import streamlit as st
 import folium
 from streamlit_folium import folium_static
 
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+function_descriptions = [
+    {
+        "name": "extract_info_from_listing",
+        "description": "Categorise & extract key info from a property listing, such as location, price, etc.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The location of the property"
+                },
+                "price": {
+                    "type": "string",
+                    "description": "The price of the property"
+                }
+            },
+            "required": ["location", "price"]
+        }
+    }
+]
+
 def process_listing(listing):
-    # This is a dummy function for now
+    prompt = f"Please extract key information from this property listing: {listing} "
+    message = [{"role": "user", "content": prompt}]
+
+    response = openai.ChatCompletion.create(
+        model="gpt-4-0613",
+        messages=message,
+        functions = function_descriptions,
+        function_call="auto"
+    )
+
     return {
         'location': {
-            'lat': 51.5074,
-            'long': -0.1278
+            'lat': response['choices'][0]['message']['content']['location']['lat'],
+            'long': response['choices'][0]['message']['content']['location']['long']
         },
-        'price': 1000000
+        'price': response['choices'][0]['message']['content']['price']
     }
 
 def main():
