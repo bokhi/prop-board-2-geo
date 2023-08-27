@@ -42,7 +42,7 @@ def process_listing(listing):
         functions = function_descriptions,
         function_call="auto"
     )
-
+    print(response)
     return {
         'location': {
             'lat': response['choices'][0]['message']['content']['location']['lat'],
